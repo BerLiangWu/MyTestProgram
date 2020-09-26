@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环</title>
+</head>
+<body>
+	<div id="container"></div>
+	<script src="js/template-web.js"></script>
+	<script type="text/html" id="tpl">
+		<ul>
+			{{each data}}
+			<li>
+				<span>姓名：{{$value.name}}</span>
+				<span>年龄：{{$value.age}}</span>
+			</li>
+			{{/each}}
+		</ul>
+	</script>
+	<script>
+		// 这是告诉模板引擎将模板id为tpl的模板和data数据对象进行拼接
+		var html = template('tpl', {
+			data: [{
+				name: '张三',
+				age: 15
+			}, {
+				name: '李四',
+				age: 20
+			}, {
+				name: '王五',
+				age: 10
+			}]
+		});
+		document.getElementById('container').innerHTML = html;
+	</script>
+</body>
+</html>

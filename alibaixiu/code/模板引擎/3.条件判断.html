@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件判断</title>
+</head>
+<body>
+	<div id="container"></div>
+	<script src="js/template-web.js"></script>
+	<script type="text/html" id="tpl">
+		<div>
+			<span>姓名：{{@ name}}</span>
+			<span>年龄：{{age}}</span>
+		</div>
+		{{if age > 18}}
+			<div>年龄大于18</div>
+		{{else}}
+			<div>年龄小于18</div>
+		{{/if}}
+	</script>
+	<script>
+		var data = {
+			name: '<b>李四</b>',
+			age: 25
+		}
+
+		// 这是告诉模板引擎将模板id为tpl的模板和data数据对象进行拼接
+		var html = template('tpl', data);
+		document.getElementById('container').innerHTML = html;
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导入模板变量</title>
+</head>
+<body>
+	<div id="container"></div>
+	<script src="js/template-web.js"></script>
+	<script type="text/html" id="tpl">
+		<div>当前时间是：{{$imports.dateFormat(date)}}</div>
+	</script>
+	<script>
+		window.onload = function () {
+			// 将方法导入到模板中
+			template.defaults.imports.dateFormat = dateFormat;
+
+			// 这是告诉模板引擎将模板id为tpl的模板和data数据对象进行拼接
+			var html = template('tpl', {
+				date: new Date()
+			});
+			document.getElementById('container').innerHTML = html;
+
+			function dateFormat(date) {
+				return date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
+			}
+		}
+		
+	</script>
+</body>
+</html>

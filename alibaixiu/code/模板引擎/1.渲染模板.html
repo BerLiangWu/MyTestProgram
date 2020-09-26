@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渲染模板</title>
+</head>
+<body>
+	<div id="container"></div>
+	<script src="js/template-web.js"></script>
+	<script type="text/html" id="tpl">
+		<div>
+			<span>姓名：{{name}}</span>
+			<span>年龄：{{age}}</span>
+		</div>
+	</script>
+	<script>
+		var data = {
+			name: '李四',
+			age: 30
+		}
+
+		// 这是告诉模板引擎将模板id为tpl的模板和data数据对象进行拼接
+		var html = template('tpl', data);
+		document.getElementById('container').innerHTML = html;
+	</script>
+</body>
+</html>
